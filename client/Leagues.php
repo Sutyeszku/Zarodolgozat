@@ -5,7 +5,6 @@
     <tr>
       <th>ID</th>
       <th>Name</th>
-      <th>Country</th>
       <th>Logo</th>
     </tr>
   </thead>
@@ -37,22 +36,20 @@ fetch(url, options)
 
       console.log('Response:', data.response);
 
-      data.response.slice(0, 100).forEach(competition => {
+      data.response.slice(0, 50).forEach(competition => {
         
 
         if (competition.league) {
           console.log(competition.league);
-          if (competition.league.country) {
             
             const leagueRow = document.createElement("tr");
             leagueRow.innerHTML = `
               <td>${competition.league.id}</td>
               <td>${competition.league.name}</td>
-              <td>${competition.league.country.name || 'N/A'}</td>
               <td><img class="img-fluid" src="${competition.league.logo}" width="50"></td>
             `;
             leaguesTableBody.appendChild(leagueRow);
-          }
+          
         }
       });
     } else {
